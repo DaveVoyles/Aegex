@@ -2,7 +2,7 @@
 layout: post
 title:  "Aegex"
 author: "Dave Voyles"
-author-link: "#"
+author-link: "www.DaveVoyles.com"
 #author-image: "{{ site.baseurl }}/images/authors/photo.jpg"
 date:   2017-01-6
 categories: [IoT, Visual Studio / Xamarin, Azure Web Apps (functions), Mobile DevOps]
@@ -10,20 +10,18 @@ color: "blue"
 #image: "{{ site.baseurl }}/images/imagename.png" #should be ~350px tall
 excerpt: Add a short description of what this article is about.
 language: The language of the article (e.g.: [English])
-verticals: The vertical markets this article has focus on (e.g.: [Energy, Manufacturing & Resources, Financial Services, Public Sector, “Retail, Consumer Products & Services”, Environmental, Communications/Media, Transportation & Logistics, Smart Cities, Agricultural, Environmental, Healthcare, Other])
+verticals: The vertical markets this article has focus on (e.g.: [Healthcare])
 ---
 
 - Solution overview
 
 TODO
 
- 
 ### Key technologies used
 - Xamarin
 - IoT Hub
 - Azure Functions
 - HockeyApp
- 
 
 
 ### Core Team:
@@ -32,6 +30,7 @@ TODO
 - [Blain Barton](http://www.twitter.com/)
 - [Dave Voyles](http://www.twitter.com/DaveVoyles)
 
+  `![Team Meeting]({{site.baseurl}}/images/Team1.png)`
 
 
 ## Customer profile ##
@@ -55,13 +54,12 @@ sites where traditional devices cannot be used.
  
 ## Problem statement ##
 
-
+ TODO
+ 
 This section will define the problem(s)/challenges that the customer wants to address with an IoT solution. Include things like costs, customer experience, etc.
  
- TODO
 
 *include a customer quote that highlights the customer’s problem(s)/challenges.*
-
 
  
 ## Solution and steps ##
@@ -69,19 +67,53 @@ This section will define the problem(s)/challenges that the customer wants to ad
 
 The majority of your win artifacts will be included in this section, including (but not limited to) the following: Pictures, drawings, architectural diagrams, value stream mappings and demo videos.
 
-This section should include the following details:
 
 - What was worked on and what problem it helped solve.
 
-- Architecture diagram/s (**required**). Example below:
+There were several parts to this project, all of which were worked on concurrently to bring together a four-part solution.
 
- ![IoT Architecture Diagram]({{site.baseurl}}/images/templates/iotarchitecture.png)
+
+**Xamarin**
+
+[Xamarin](https://www.xamarin.com/) is a C# framework for creating mobile applications across iOS, Android, and Windows 10. 
+With Xamarin we created two pages: A landing page which draws the name of each IoT sensor and a details page, 
+offers a more in-depth analysis of each sensor.
+
+All of the data is retrieved from an Azure Function, which pulls the data from an Azure SQL database. 
+
+The Azure function serves JSON, which is parsed with Netwonsoft.JSON and drawn to the screen via XAML. 
+
+**HockeyApp**
+
+[HockeyApp](https://hockeyapp.net/#s) is a service for app developers to support them in various aspects of their development process,
+including the management and recruitment of testers, the distribution of apps and the collection
+of crash reports.
+
+For this application, we used HockeyApp to create [custom events](https://support.hockeyapp.net/kb/general-account-management-2/getting-started-with-custom-events-public-preview),
+which allows us to fire off an notification to our event hub each time that custom event is triggered. This could be used for
+something as simple as notiying the dashboard each time fresh data was retrieved from the Azure Function, or how long it took
+to load a specific page.  
+
+TODO: @JOE please insert an image from your HockeyApp dashboard here
+
+
+**IoT Hub**
+
+TODO @KRISTIN / @BLAIN
+
+**Azure Functions**
+
+TODO @JOE
+
+
+- Architecture diagram/s (**required**). 
+
+TODO @KRISTIN / @BLAIN
+
 
 **Directions for adding images:**
-
-1. Create a folder for your project images in the “images” folder in the GitHub repo files. This is where you will add all of the images associated with your write-up.
  
-2. Add links to your images using the following absolute path:
+ Add links to your images using the following absolute path:
 
   `![Description of the image]({{site.baseurl}}/images/projectname/myimage.png)`
     
@@ -105,13 +137,35 @@ This section will include the following details of how the solution was implemen
 
 - SDKs used, languages, etc.
 
+**Xamarin & HockeyApp**
+- C# / XAML
+
+**Azure Functions**
+- C#
+
+**Windows 10 IoT**
+- C#
+- Raspberry Pi
+
+TODO 
+
 - Code artifacts
 
 - Pointers to references or documentation
 
 - Learnings from the Microsoft team and the customer team
 
+HockeyApp was a bit overwhelming initially, because the name spaces and API are not identical across the three platforms:
+iOS, Android, and Windows. Becaue of this, it took londer than expected to implement.
 
+Furthermore, on iOS HockeyApp continues to throw the error *The authentication token could not be stored due to a keychain error.*
+
+[This is a known issue,](https://support.hockeyapp.net/discussions/problems/63710-the-authentication-token-could-not-be-stored-due-to-a-keychain-error) 
+and the team hopes to have it resolved with future iterations of xCode. 
+
+Despite this error, HockeyApp still works, and all of my events displayed correctly in the dashboard. 
+
+`![HockeyApp Error]({{site.baseurl}}/images/Hockeyapp-error-ios.png)`
  
 ## Conclusion ##
 
@@ -129,17 +183,16 @@ This section will briefly summarize the technical story with the following detai
 
   - Details on how the customer plans to proceed or what more they hope to accomplish.
 
-*If you’d really like to make your write-up pop, include a customer quote highlighting impact, benefits, general lessons, and/or opportunities.*
+*include a customer quote highlighting impact, benefits, general lessons, and/or opportunities.*
 
 
 ## Additional resources ##
-In this section, include a list of links to resources that complement your story, including (but not limited to) the following:
-
 - Documentation
 
 - Blog posts
 
 - GitHub repos
 
-- Etc…
+[Xamarin & HockeyApp Portion of this Project on GitHub](https://github.com/DaveVoyles/Aegex-Xamarin-IoT-Display)
+
 
