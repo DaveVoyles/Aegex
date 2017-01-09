@@ -110,7 +110,7 @@ We use an [Azure Function](https://azure.microsoft.com/en-us/services/functions/
 
 By taking advantage of Azure Functions **serverless code architecture**, Aegex does not have the complexity of managing a virtual machine. This also results in significant cost savings. 
 
-![Azure Function 1 Diagram](images/azure-function-1-diagram.png)
+![Azure Function 1 Diagram](images/azure-function-1-diagram-v2.png)
 
 - Architecture diagram/s (**required**). 
 
