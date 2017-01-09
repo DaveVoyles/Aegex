@@ -26,12 +26,12 @@ TODO
 TODO: Add twitter profile / dev leads
 
 ### Core Team:
-- [Kristin Ottofy](http://www.twitter.com/)
-- [Joe Raio](http://www.twitter.com/)
-- [Blain Barton](http://www.twitter.com/)
-- [Dave Voyles](http://www.twitter.com/DaveVoyles)
+- Kristin Ottofy [(@kristinottofy)](https://twitter.com/kristinottofy) – Technical Evangelist, Microsoft
+- Joe Raio [(@joescars)](https://twitter.com/joescars) – Technical Evangelist, Microsoft
+- Blain Barton [(@blainbar)](https://twitter.com/blainbar) – Technical Evangelist, Microsoft
+- Dave Voyles [(@DaveVoyles)](https://twitter.com/DaveVoyles) – Technical Evangelist, Microsoft
 
-  `![Team Meeting]({{site.baseurl}}/images/Team1.png)`
+ ![Team Meeting]({{site.baseurl}}/images/Team1.png)
 
 
 ## Customer profile ##
