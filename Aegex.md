@@ -108,7 +108,7 @@ TODO @KRISTIN / @BLAIN
 
 We use an [Azure Function](https://azure.microsoft.com/en-us/services/functions/) to monitor the data being sent up to Azure IoT Hub. The custom function triggers every time a new message is received. As they arrive, they are retrieved, then inserted into an SQL Azure database. By doing this, the data is permanently stored and can be utilized in the future with tools such as [PowerBI](https://powerbi.microsoft.com/en-us/). 
 
-By taking advantage of Azure Functions **serverless cod architecture**, Aegex does not have the complexity of managing a virtual machine. This also results in significant cost savings. 
+By taking advantage of Azure Functions **serverless code architecture**, Aegex does not have the complexity of managing a virtual machine. This also results in significant cost savings. 
 
 ![Azure Function 1 Diagram](images/azure-function-1-diagram.png)
 
