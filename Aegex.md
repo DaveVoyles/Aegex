@@ -31,8 +31,7 @@ TODO: Add twitter profile / dev leads
 - Blain Barton [(@blainbar)](https://twitter.com/blainbar) – Technical Evangelist, Microsoft
 - Dave Voyles [(@DaveVoyles)](https://twitter.com/DaveVoyles) – Technical Evangelist, Microsoft
 
- ![Team Meeting]({{site.baseurl}}/images/Team1.png)
-
+TODO: TEAM PICTURE
 
 ## Customer profile ##
 
