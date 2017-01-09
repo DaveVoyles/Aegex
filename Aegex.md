@@ -23,6 +23,7 @@ TODO
 - Azure Functions
 - HockeyApp
 
+TODO: Add twitter profile / dev leads
 
 ### Core Team:
 - [Kristin Ottofy](http://www.twitter.com/)
