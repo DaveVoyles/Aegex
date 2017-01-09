@@ -62,6 +62,9 @@ This section will define the problem(s)/challenges that the customer wants to ad
 
 *include a customer quote that highlights the customer’s problem(s)/challenges.*
 
+## Expected results / outcome ##
+
+TODO
  
 ## Solution and steps ##
 
