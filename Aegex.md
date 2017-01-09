@@ -97,8 +97,8 @@ which allows us to fire off an notification to our event hub each time that cust
 something as simple as notiying the dashboard each time fresh data was retrieved from the Azure Function, or how long it took
 to load a specific page.  
 
-TODO: @JOE please insert an image from your HockeyApp dashboard here
-
+![Hockey App 1](images/hockeyapp-1.jpg)
+![Hockey App 1](images/hockeyapp-2.jpg)
 
 **IoT Hub**
 
