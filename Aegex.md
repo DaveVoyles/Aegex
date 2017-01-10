@@ -23,20 +23,24 @@ TODO
 - Azure Functions
 - HockeyApp
 
-TODO: Add twitter profile / dev leads
-
 ### Core Team:
 - Kristin Ottofy [(@kristinottofy)](https://twitter.com/kristinottofy) – Technical Evangelist, Microsoft
 - Joe Raio [(@joescars)](https://twitter.com/joescars) – Technical Evangelist, Microsoft
 - Blain Barton [(@blainbar)](https://twitter.com/blainbar) – Technical Evangelist, Microsoft
 - Dave Voyles [(@DaveVoyles)](https://twitter.com/DaveVoyles) – Technical Evangelist, Microsoft
 
+### Dev Leads:
+- Ian Philpot [(@tripdubroot)](https://twitter.com/tripdubroot) – Technical Evangelist, Microsoft
+- David Crook [(@Data4Bots)](https://twitter.com/Data4Bots) – Technical Evangelist, Microsoft
+
 TODO: TEAM PICTURE
+![Team Picture]({{site.baseurl}}/images/projectname/myimage.png)
 
 ## Customer profile ##
 
 ### Aegex
-
+TODO: Insert Aegex Logo 
+![Aegex Logo]({{site.baseurl}}/images/projectname/myimage.png)
 
 [Aegex.com](http://www.aegex.com) | Atlanta, Georgia
 
@@ -57,13 +61,15 @@ sites where traditional devices cannot be used.
  TODO
  
 This section will define the problem(s)/challenges that the customer wants to address with an IoT solution. Include things like costs, customer experience, etc.
+
+Aegex is devoted to protecting workers in hazardous locations such as oil rigs or mines in which people are in proximity to hazardous materials such as flamable liquids or toxic gases. Aegex has developed a certified intrinsically safe tablet for use in those environments and needed a low-cost, scalable, and efficient platform that allows users to interact with and manage their setting. They first experimented by placing an IoT infrasture using Raspberry Pis and all sorts of sensors at the [Guardian Center](https://guardiancenters.com/) in Perry, GA where they could collect real-time gas, flame, weather, and other crucial pieces of data. Microsoft has helped expand on the application by providing a Raspberry Pi prototype that connects to Azure and displays data onto a Xamarin app.
  
 
-*include a customer quote that highlights the customer’s problem(s)/challenges.*
+TODO: *include a customer quote that highlights the customer’s problem(s)/challenges.*
 
 ## Expected results / outcome ##
 
-TODO
+Microsoft's goal was to deliver a working Xamarin application that would be on the path to production that displayed real-time data collected from sensors in a workplace. They ended up building an IoT solution with a Raspberry Pi and sensors from the Microsoft Innovation Center in Atlanta. This solution uses Windows 10 IoT Core and Azure IoT Hub to send messages to Azure. An Azure Function activates on a new message in the Hub and executes a command to store this data in a scalable SQL database. Finally, a Xamarin app using Hockey App pulls the data and displays on multiple platforms including Windows, iOS, and Android. 
  
 ## Solution and steps ##
 
