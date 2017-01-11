@@ -33,8 +33,7 @@ TODO
 - Ian Philpot [(@tripdubroot)](https://twitter.com/tripdubroot) – Technical Evangelist, Microsoft
 - David Crook [(@Data4Bots)](https://twitter.com/Data4Bots) – Technical Evangelist, Microsoft
 
-TODO: TEAM PICTURE
-![Team Picture]({{site.baseurl}}/images/projectname/myimage.png)
+![Aegex Team with CEO](images/teampic-v2.jpg)
 
 ## Customer profile ##
 
