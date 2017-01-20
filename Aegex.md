@@ -13,8 +13,7 @@ language: The language of the article (e.g.: [English])
 verticals: The vertical markets this article has focus on (e.g.: [Healthcare])
 ---
 
-- Solution overview
-
+### Solution overview
 TODO
 
 ### Key technologies used
@@ -29,7 +28,10 @@ TODO
 - Blain Barton [(@blainbar)](https://twitter.com/blainbar) – Technical Evangelist, Microsoft
 - Dave Voyles [(@DaveVoyles)](https://twitter.com/DaveVoyles) – Technical Evangelist, Microsoft
 
-### Dev Leads:
+### Aegex Team:
+- Tom Ventulett - CEO, Aegex
+
+### Development Leads:
 - Ian Philpot [(@tripdubroot)](https://twitter.com/tripdubroot) – Technical Evangelist, Microsoft
 - David Crook [(@Data4Bots)](https://twitter.com/Data4Bots) – Technical Evangelist, Microsoft
 
@@ -38,8 +40,7 @@ TODO
 ## Customer profile ##
 
 ### Aegex
-TODO: Insert Aegex Logo 
-![Aegex Logo]({{site.baseurl}}/images/projectname/myimage.png)
+![Aegex Logo](images/aegex.png)
 
 [Aegex.com](http://www.aegex.com) | Atlanta, Georgia
 
@@ -56,9 +57,7 @@ sites where traditional devices cannot be used.
 
  
 ## Problem statement ##
-
- TODO
- 
+TODO
 This section will define the problem(s)/challenges that the customer wants to address with an IoT solution. Include things like costs, customer experience, etc.
 
 Aegex is devoted to protecting workers in hazardous locations such as oil rigs or mines in which people are in proximity to hazardous materials such as flamable liquids or toxic gases. Aegex has developed a certified intrinsically safe tablet for use in those environments and needed a low-cost, scalable, and efficient platform that allows users to interact with and manage their setting. They first experimented by placing an IoT infrasture using Raspberry Pis and all sorts of sensors at the [Guardian Center](https://guardiancenters.com/) in Perry, GA where they could collect real-time gas, flame, weather, and other crucial pieces of data. Microsoft has helped expand on the application by providing a Raspberry Pi prototype that connects to Azure and displays data onto a Xamarin app.
@@ -67,12 +66,9 @@ Aegex is devoted to protecting workers in hazardous locations such as oil rigs o
 TODO: *include a customer quote that highlights the customer’s problem(s)/challenges.*
 
 ## Expected results / outcome ##
-
 Microsoft's goal was to deliver a working Xamarin application that would be on the path to production that displayed real-time data collected from sensors in a workplace. They ended up building an IoT solution with a Raspberry Pi and sensors from the Microsoft Innovation Center in Atlanta. This solution uses Windows 10 IoT Core and Azure IoT Hub to send messages to Azure. An Azure Function activates on a new message in the Hub and executes a command to store this data in a scalable SQL database. Finally, a Xamarin app using Hockey App pulls the data and displays on multiple platforms including Windows, iOS, and Android. 
  
 ## Solution and steps ##
-
-
 The majority of your win artifacts will be included in this section, including (but not limited to) the following: Pictures, drawings, architectural diagrams, value stream mappings and demo videos.
 
 
@@ -105,9 +101,22 @@ to load a specific page.
 ![Hockey App 1](images/hockeyapp-1.jpg)
 ![Hockey App 1](images/hockeyapp-2.jpg)
 
-**IoT Hub**
+**Internet of Things**
+The intitial prototype was built using Windows 10 IoT Core installed on a Raspberry Pi 2 with the following sensors connected:
+- Keyes KY-036 Metal Touch Sensor
+- Keyes K869051 Gas Sensor
+- Keyes KY-026 Flame Sensor
+- Keyes KY-031 Knock Sensor
+- Adafruit BMP280 Barometric Pressure + Temperature Sensor
+- Keyes KY-028 Light Sensor
 
-TODO @KRISTIN / @BLAIN
+TODO: insert image of device and fritzing diagram
+
+The deployed software running on the device is a Universal Windows Platform app with the Windows IoT Extension SDK. This SDK allowed the device to access the GPIO pins to manage the input and output of the sensors. Timers are enabled to collect and send data only when necessary. For instance, only if there is a fire detected does a notification get sent regarding the flame sensor. The messages are sent from the device to the cloud permitting internet connection. The code is available [here](https://github.com/kottofy/ThePiFiles).
+
+The messages from the device are sent to an Azure IoT Hub. The IoT Hub allowed for a scalable messaging environment in which bi-directional communication is enabled. Once the devices collect sensor data, they use the IoT Hub connected service in Visual Studio to send JSON messages of the information. An Azure Function watches for new messages coming into this IoT Hub. The IoT Hub also allowed for a more secure environment in which only devices that have been properly assigned an ID and tokens can access the resource. 
+
+A Raspberry Pi 2 was chosen as the prototype device due to it's convenience and reliability with the Windows 10 IoT Core and UWP applications. The user interface displayed on the Pi shows the latest sensor data to be sent to Azure. In the future, this can be updated to show a more robust view for easier debugging. A microcontroller such as an Arduino could have been used to gather the data and send to Azure as well and may be a viable option for future devices, although the program would likely need to be in another language and depending on the device, may not enable a user interface. 
 
 **Azure Functions**
 
