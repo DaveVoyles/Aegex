@@ -110,7 +110,7 @@ The intitial prototype was built using Windows 10 IoT Core installed on a Raspbe
 - Adafruit BMP280 Barometric Pressure + Temperature Sensor
 - Keyes KY-028 Light Sensor
 
-TODO: insert image of device and fritzing diagram
+![IoT](images/aegex-iot-device.PNG)
 
 The deployed software running on the device is a Universal Windows Platform app with the Windows IoT Extension SDK. This SDK allowed the device to access the GPIO pins to manage the input and output of the sensors. Timers are enabled to collect and send data only when necessary. For instance, only if there is a fire detected does a notification get sent regarding the flame sensor. The messages are sent from the device to the cloud permitting internet connection. The code is available [here](https://github.com/kottofy/ThePiFiles).
 
