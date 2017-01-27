@@ -45,30 +45,27 @@ using a Raspberry Pi with Microsoft technologies.
 
 [Aegex.com](http://www.aegex.com) | Atlanta, Georgia
 
-Aegex provides the first Windows 10 tablet globally certified intrinsically 
-safe for use in the most hazardous industrial locations worldwide.
+Aegex provides the first Windows 10 tablet that is globally certified intrinsically safe for use in the most hazardous industrial locations worldwide.
 
-One of their best known products is the **Aegex 10.1-inch Intrinsically Safe Tablet**
+One of their best known products is the [Aegex10 Intrinsically Safe Tablet](http://aegex.com/products/aegex10-intrinsically-safe-tablet/). Incapable of igniting a spark that could cause an explosion in combustible environments, this patents-pending industrial device connects users to real-time data and communications in oil refineries, chemical manufacturing facilities, mines, power plants and other hazardous locations where traditional devices are not permitted. Access to Cloud data and services streamlines workflow and collaboration, helping to improve efficiency and productivity.
 
-The Aegex10 IS Tablet is purpose-built for use in the most hazardous zones of 
-explosive environments. Incapable of igniting a spark, this patents-pending
-industrial device allows for superior mobile communications on dangerous job
-sites where traditional devices cannot be used.
 
 
  
 ## Problem statement
 
-Aegex is devoted to protecting workers in hazardous locations such as oil rigs 
-or mines in which people are in proximity to hazardous materials such as flamable 
-liquids or toxic gases. Aegex has developed a certified intrinsically safe tablet 
-for use in those environments and needed a low-cost, scalable, and efficient platform 
-that allows users to interact with and manage their setting. They first experimented 
-by placing an IoT infrasture using Raspberry Pis and all sorts of sensors at the 
-[Guardian Center](https://guardiancenters.com/) in Perry, GA where they could 
-collect real-time gas, flame, weather, and other crucial pieces of data. 
-Microsoft has helped expand on the application by providing a Raspberry Pi 
-prototype that connects to Azure and displays data onto a Xamarin app.
+Aegex is devoted to protecting workers in hazardous locations such as 
+oil rigs or mines in which people are in proximity to hazardous 
+materials such as flamable liquids or toxic gases. Aegex has developed 
+a certified intrinsically safe tablet for use in those environments 
+and needed a low-cost, scalable, and efficient platform that allows 
+users to interact with and manage their settings. They first 
+experimented by placing an IoT infrastructure using Raspberry Pis 
+and all sorts of sensors at the [Guardian Centers](https://guardiancenters.com/) in Perry, GA where 
+they could collect real-time gas, flame, weather, and other crucial 
+pieces of data. Microsoft has helped expand on the application by 
+providing a Raspberry Pi prototype that connects to Azure and displays 
+data onto a Xamarin app.
 
 TODO: *include a customer quote that highlights the customer’s problem(s)/challenges.*
 
