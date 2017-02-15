@@ -49,13 +49,20 @@ using a Raspberry Pi with Microsoft technologies.
 
 [Aegex.com](http://www.aegex.com) | Atlanta, Georgia
 
-Aegex provides the first Windows 10 tablet that is globally certified intrinsically safe for use in the most hazardous industrial locations worldwide.
+Aegex provides the first Windows 10 tablet that is globally certified intrinsically safe for use in 
+the most hazardous industrial locations worldwide.
 
-One of their best known products is the [Aegex10 Intrinsically Safe Tablet](http://aegex.com/products/aegex10-intrinsically-safe-tablet/). Incapable of igniting a spark that could cause an explosion in combustible environments, this patents-pending industrial device connects users to real-time data and communications in oil refineries, chemical manufacturing facilities, mines, power plants and other hazardous locations where traditional devices are not permitted. Access to Cloud data and services streamlines workflow and collaboration, helping to improve efficiency and productivity.
+One of their best known products is the [Aegex10 Intrinsically Safe Tablet](http://aegex.com/products/aegex10-intrinsically-safe-tablet/). 
+Incapable of igniting a spark that could cause an explosion in combustible environments, 
+this patents-pending industrial device connects users to real-time data and communications 
+in oil refineries, chemical manufacturing facilities, mines, power plants and other hazardous 
+locations where traditional devices are not permitted. Access to Cloud data and services 
+streamlines workflow and collaboration, helping to improve efficiency and productivity.
+
+Microsoft chose to work with Aegex for their commitment to improving the safety and lives
+of workers in hazardous environments. 
 
 
-
- 
 ## Problem statement
 
 Aegex is devoted to protecting workers in hazardous locations such as 
@@ -179,18 +186,23 @@ The software running on a Raspberry Pi 2 Mobel B V1.1 is a C#/XAML Universal Win
 app with the 
 Windows IoT Extension SDK running Windows 10 IoT Core version 10.0.14393.576. This SDK allowed 
 the device to access the GPIO pins to manage 
-the input and output of the sensors. Timers are enabled to collect and send data only when 
+the input and output of the sensors. Windows 10 IoT Core was chosen to extend on their already
+implemented structure and desire to continue with the Windows brand. A Raspberry Pi was chosen 
+for the same reasons and because of the integration support with Microsoft technologies.
+
+Timers are enabled to collect and send data only when 
 necessary. For instance, only if there is a fire detected does a notification get sent 
 regarding the flame sensor. Other data is collected and sent every two seconds. The messages 
 are sent from the device to the cloud permitting 
 internet connection. The code is available [here](https://github.com/aegexdev/ThePiFiles).
 
-The messages from the device are sent to an Azure IoT Hub. The IoT Hub allowed for a 
+The messages from the device are sent to an Azure IoT Hub via HTTP. The IoT Hub allows for a 
 scalable messaging environment in which bi-directional communication is enabled. Once the 
-devices collect sensor data, they use the IoT Hub connected service in Visual Studio to 
+devices collect sensor data, they use the IoT Hub connected service sample in Visual Studio to 
 send JSON messages of the information. An Azure Function watches for new messages coming 
 into this IoT Hub. The IoT Hub also allowed for a more secure environment in which only 
-devices that have been properly assigned an ID and tokens can access the resource. 
+devices that have been properly assigned an ID and tokens can access the resource. Futher 
+securities measures may take place in a later phase.
 
 A Raspberry Pi 2 was chosen as the prototype device due to it's convenience and reliability 
 with the Windows 10 IoT Core and UWP applications. The user interface displayed on the Pi 
@@ -201,11 +213,24 @@ future devices, although the program would likely need to be in another language
 depending on the device, may not enable a user interface. 
 
 A future update to this application may be to limit the number of messages the device sends 
-to the IoT Hub per day. Currently, Azure receives 30 messages per minute plus any anomolies 
+to the IoT Hub per day or use a field gateway such as the Azure IoT Gateway SDK.
+Currently, Azure receives 30 messages per minute plus any anomolies 
 detected such as flame or metal touch. In production, the ideal situation may be to store
 this data local on the Pi and send to Azure much more infrequently. That would decrease the
 cost, especially if more devices are also sending data. This frequency can currently be changed
 by updating the `SENSOR_CHECK_TIME` variable in [MainPage.xaml.cs](https://github.com/kottofy/ThePiFiles/blob/master/SensorApp/MainPage.xaml.cs).
+
+## Costs
+
+One of the reasons for choosing this solution is the potential of high ingestion of messages
+being sent over the cloud. By eliminating Stream Analytics and a Service Bus Queue where the 
+cost would be $0.05 per million operations for a Service Bus Queue plus a Stream Analytics job at 
+$81.84 per month, Aegex would only spend $55.80 with a Basic app service plan at today's current
+pricing.
+
+![here](images\azure-pricing-app-service.PNG)
+![here](images\azure-pricing-service-bus.PNG)
+![here](images\azure-pricing-stream-analytics.PNG)
 
 # Future Opportunities
 
@@ -217,10 +242,16 @@ and set out in the facility to collect real-time data.
 Additionally, Aegex would like to use machine learning to detect anomolies in their data and
 use predictive analytics to determine optimal evacuation routes, serious threats, and other
 necessary alerts. Upon detection, the Xamarin app would ideally notify the user that there is
-an issue via a Push Notification from Azure. 
+an issue via a Push Notification from Azure. Further notifications could extend to watches 
+employees wear for faster alerts to aid in saving lives.
+
+As for IoT, Aegex will need to have the devices certified for hazardous environments. There 
+currently exists no solution for the certifications they require at a reasonable price. 
+Additionally, each of the sensors would need to be tested. Aegex would likely need to design
+their own hardware system to support these needs. Wifi is also not always available in the 
+field. Therefore, they may need to partner with other companies to find a solution.
 
 # Conclusion 
-TODO *include a customer quote highlighting impact, benefits, general lessons, and/or opportunities.*
 
 ### Xamarin Reflection
 
