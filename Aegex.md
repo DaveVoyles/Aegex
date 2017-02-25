@@ -101,15 +101,18 @@ together a four-part solution.
 
 ### Xamarin
 
-[Xamarin](https://www.xamarin.com/) is a C# framework for creating mobile applications 
-across iOS, Android, and Windows 10. 
-With Xamarin we created two pages: A landing page which draws the name of each IoT sensor
-and a details page, offers a more in-depth analysis of each sensor.
+[Xamarin](https://www.xamarin.com/) is a cross-platform C# framework for creating applications. It 
+isn’t limited to mobile devices either, as it can also export to Microsoft’s Universal Windows Platform (UWP), 
+as well as Apple’s Mac operating system, OS X.
 
-All of the data is retrieved from an Azure Function, which pulls the data from an Azure SQL database. 
+Perhaps the greatest benefit to Xamarin is the large code re-use that it allows for. Until recently, developers needed 
+create unique applications for each mobile platform, and write those apps in the platform’s native language. In the case
+of iOS, it would be Objective-C or Swift, Java or C++ for Android, and C# or C++ for Windows Mobile.
 
-The Azure function serves JSON, which is parsed with Netwonsoft.JSON and drawn to the screen via XAML. 
-
+Even better, Xamarin.Forms allows developers to write platform specific code in its respective project, but most of your UI 
+can be shared within a single set of files. Forms is a new library that enables you to build native UIs for iOS, Android
+and Windows Phone from a single, shared C# codebase. It provides more than 40 cross-platform controls and layouts which are
+mapped to native controls at runtime, which means that your user interfaces are fully native.
 
 ### Internet of Things
 
@@ -142,13 +145,113 @@ have the complexity of managing a virtual machine. This also results in signific
 
 ## Xamarin
 
-The Xamarin application is written in C#/XAML. The code is available [here](https://github.com/aegexdev/Aegex-Xamarin-IoT-Display). 
+Our solution here had fulfill three requirements:
+
+- Mobile application on multiple platforms (iOS, Android, Windows)
+- Display a listview of the current sensors
+- Display data from each of the sensors
+
+With Xamarin we created two pages: 
+
+1. landing page which draws the name of each IoT sensor
+2. details page, offers a more in-depth analysis of each sensor.
+
+All of the data is retrieved from an Azure Function, which pulls the data from an Azure SQL database. 
+This data came from the IoT device (sensors) we highlighted above. 
+
+This is what our data model looked like in [DeviceData.cs](https://raw.githubusercontent.com/DaveVoyles/Aegex-Xamarin-IoT-Display/master/1to1Core/_1to1Core/DeviceData.cs)
+
+```C#
+	public class DeviceData
+	{
+		public int Id{
+			get;
+			set;
+		}
+
+		public string DeviceId
+		{
+			get;
+			set;
+		}
+
+		public string SensorType
+		{
+			get;
+			set;
+		}
+
+		public string SensorValue
+		{
+			get;
+			set;
+		}
+
+		public DateTime OutputTime
+		{
+			get;
+			set;
+		}
+```
+
+In [DetailsPage.xaml.cs](https://raw.githubusercontent.com/DaveVoyles/Aegex-Xamarin-IoT-Display/master/1to1Core/_1to1Core/Views/DetailsPage.xaml)
+you can see how we draw the content to the screen:
+
+```XAML
+	<ListView x:Name="listView" ItemTapped="OnItemTapped"   SeparatorVisibility="Default"  RowHeight="100">
+	    <ListView.ItemTemplate>
+  			<DataTemplate>
+				<ViewCell>
+					<StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
+					    <StackLayout Padding="5,0,5,0" VerticalOptions="StartAndExpand" Orientation="Vertical">
+							<StackLayout Orientation="Horizontal" >
+								<Label Text="Name: "  			  VerticalTextAlignment="Center" FontSize="Medium"  TextColor="Black" FontAttributes="Bold" />
+							    <Label Text="{Binding DeviceId}"  VerticalTextAlignment="Center" FontSize="Medium"  TextColor="Black"/>
+							</StackLayout>
+							<StackLayout Orientation="Horizontal" >
+								<Label Text="Sensor Type: "  VerticalTextAlignment="Center" FontSize="Small" FontAttributes="Bold" />
+								<Label Text="{Binding SensorType}"  VerticalTextAlignment="Center" FontSize="Small" />
+							</StackLayout>
+							<StackLayout Orientation="Horizontal" >
+								<Label Text="Sensor Value: "  VerticalTextAlignment="Center" FontSize="Small" FontAttributes="Bold" />
+								<Label Text="{Binding SensorValue}" VerticalTextAlignment="Center" FontSize="Small" />
+							</StackLayout>
+							<StackLayout Orientation="Horizontal" >
+								<Label Text="Output Time: "  VerticalTextAlignment="Center" FontSize="Small" FontAttributes="Bold" />
+								<Label Text="{Binding OutputTime}"  VerticalTextAlignment="Center" FontSize="Small" />
+							</StackLayout>
+						</StackLayout>
+					</StackLayout>
+				</ViewCell>
+  			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+```
+We use a StackLayout to display each sensor value as a label, which is essentially text. For example, in the first label we have the 
+DeviceId, followed by the SensorType. A StackLayout does nothing more than allow us to lay objects, whether they are text, buttons, or images, 
+adjacent to one-another. This layout can be horizontal, which is what we are doing for our phone app, but could also layout vertically, which would 
+be appropriate for a widescreen device. 
+
+The Azure function serves JSON, which is parsed with Netwonsoft.JSON on the Xamarin application,
+and drawn to the screen via XAML the markup language
+
+The Xamarin application is written in C#/XAML, and utilized Xamarin Forms.
+ The code is available [here](https://github.com/aegexdev/Aegex-Xamarin-IoT-Display). 
+
+Of note, the variable `_sDomain` in the [LandingPage.xaml.cs](https://github.com/aegexdev/Aegex-Xamarin-IoT-Display/blob/master/1to1Core/_1to1Core/Views/LandingPage.xaml.cs)
+file is the URL from the `GetCurrentSensorValues` Azure function. 
+
+**Future Aspirations**
 
 Future hopes for the application is to display data more cleanly including graphs and charts, 
-ideally from Power BI. 
+ideally from a service like Power BI. This is possible with Xamarin's built-in WebView component, 
+which allows the developer to access webpages within their application by embedding the device’s native 
+browser via a Xamarin control. As a developer, you want to keep the user engaged within your 
+application and not ever have to leave, because once they are going, it’s difficult to grab their 
+attention again.
 
-One note, the variable `_sDomain` in the [LandingPage.xaml.cs](https://github.com/aegexdev/Aegex-Xamarin-IoT-Display/blob/master/1to1Core/_1to1Core/Views/LandingPage.xaml.cs)
-file is the URL from the `GetCurrentSensorValues` Azure function. 
+
+**HockeyApp**
 
 [HockeyApp](https://hockeyapp.net/#s) is a service for app developers to support them 
 in various aspects of their development process,including the management and recruitment 
